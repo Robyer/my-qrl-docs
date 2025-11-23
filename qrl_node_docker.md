@@ -260,14 +260,14 @@ Paste this content:
 Description=QRL Node Docker Container
 Requires=docker.service
 After=docker.service
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 Type=simple
 Restart=on-failure
 RestartSec=5s
-StartLimitIntervalSec=60
-StartLimitBurst=3
-KillMode=none
+KillMode=mixed
 
 ExecStartPre=-/usr/bin/docker rm -f qrl-node
 ExecStart=/usr/bin/docker run \
