@@ -9,10 +9,11 @@ Guide for installing and configuring a QRL blockchain node using Docker.
 4. [Configure QRL Node (Optional)](#configure-qrl-node-optional)
 5. [Pull Docker Image](#pull-docker-image)
 6. [Run the Container](#run-the-container)
-7. [Verify Installation](#verify-installation)
-8. [Optional: Enable Public API Access](#optional-enable-public-api-access)
-9. [Management Commands](#management-commands)
-10. [Auto-Start with Systemd](#auto-start-with-systemd)
+7. [Optional: Fast Sync with Blockchain Snapshot](#optional-fast-sync-with-blockchain-snapshot)
+8. [Verify Installation](#verify-installation)
+9. [Optional: Enable Public API Access](#optional-enable-public-api-access)
+10. [Management Commands](#management-commands)
+11. [Auto-Start with Systemd](#auto-start-with-systemd)
 
 ---
 
@@ -21,6 +22,7 @@ Guide for installing and configuring a QRL blockchain node using Docker.
 - Ubuntu server or VPS (tested on Ubuntu 24.04, should work on earlier versions)
 - Root or sudo access
 - At least 20GB free disk space (blockchain data grows over time)
+  - For snapshot sync you need at least ~40GB (to download and extract the data).
 - Stable internet connection
 - Basic familiarity with Linux command line
 
@@ -128,6 +130,37 @@ sudo docker ps
 
 ---
 
+## Optional: Fast Sync with Blockchain Snapshot
+
+Instead of syncing from scratch you can download a recent blockchain snapshot and sync from there.
+
+1. Download the blockchain from the [QRL Blockchain Snapshot](qrl_blockchain_snapshot.md) page.
+2. Stop the QRL node
+    ```bash
+    sudo docker stop qrl-node
+    ```
+3. Remove existing blockchain state files (if any)
+    ```bash
+    sudo rm -rf /opt/qrl-data/data/state
+    ```
+4. Extract the archive into the data directory
+    ```bash
+    sudo tar -xzf qrl-snapshot-2025-11-23.tar.gz -C /opt/qrl-data/data/
+    ```
+
+    Files from the archive should already have correct ownership set (user/group 999), but use this command to be sure:
+    ```bash
+    sudo chown -R 999:999 /opt/qrl-data/data/state
+    ```
+5. Start the QRL node
+    ```bash
+    sudo docker start qrl-node
+    ```
+
+    The node should now sync the remaining blocks, starting from the snapshot height.
+
+---
+
 ## Verify Installation
 
 Check that your QRL node is running and syncing:
@@ -146,7 +179,9 @@ sudo docker exec -it qrl-node qrl state
 - `blockHeight` - Should be increasing as blockchain syncs
 - `numConnections` - Should show connected peers
 
-Initial blockchain sync can take several hours to days depending on network speed and current blockchain size.
+Full blockchain sync from scratch can take about 2 weeks depending on network speed and current blockchain size.
+Sync from the snapshot will take less than 1 hour.
+
 
 ---
 
@@ -162,27 +197,27 @@ By default, the QRL node's API only listens on localhost (127.0.0.1) inside the 
 
 2. Edit the configuration file:
 
-```bash
-sudo nano /opt/qrl-data/config.yml
-```
+    ```bash
+    sudo nano /opt/qrl-data/config.yml
+    ```
 
 3. Find the line:
 
-```yaml
-# public_api_host: "127.0.0.1"
-```
+    ```yaml
+    # public_api_host: "127.0.0.1"
+    ```
 
 4. Uncomment it and change to:
 
-```yaml
-public_api_host: "0.0.0.0"
-```
+    ```yaml
+    public_api_host: "0.0.0.0"
+    ```
 
 5. Save the file and restart the container:
 
-```bash
-sudo docker restart qrl-node
-```
+    ```bash
+    sudo docker restart qrl-node
+    ```
 
 The API will now be accessible from external networks on port 19009.
 
@@ -313,3 +348,4 @@ sudo journalctl -u qrl-node.service -f
 - **QRL Public API:** https://docs.theqrl.org/api/qrl-public-api/
 - **QRL Explorer:** https://explorer.theqrl.org/
 - **Docker Hub (QRL Image):** https://hub.docker.com/r/qrledger/qrl-docker
+- **QRL Blockchain Snapshot:** [qrl_blockchain_snapshot.md](qrl_blockchain_snapshot.md)
