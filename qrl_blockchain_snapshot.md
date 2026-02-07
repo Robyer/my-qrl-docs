@@ -10,9 +10,14 @@ If you don't want to wait that long, you can download a recent snapshot of the b
 
 **💻 Size:** 15.80 GB
 
-**🧲 Magnet URI:** [qrl-snapshot-2025-11-23](magnet:?xt=urn:btih:9db9c705d5f80cfe7e68713fe7e0b818e1b0f1e5&dn=qrl-snapshot-2025-11-23.tar.gz&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce)
-
 **💾 Torrent File:** [qrl-snapshot-2025-11-23.torrent](/files/qrl-snapshot-2025-11-23.torrent)
+
+**🧲 Magnet Link:** 
+```
+magnet:?xt=urn:btih:9db9c705d5f80cfe7e68713fe7e0b818e1b0f1e5&dn=qrl-snapshot-2025-11-23.tar.gz&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce
+```
+
+---
 
 The blockchain state is in the form of `*.tar.gz` archive available for download as a torrent. You can download it using any standard app, like [qBittorrent](https://www.qbittorrent.org) or [Transmission](https://transmissionbt.com).
 
