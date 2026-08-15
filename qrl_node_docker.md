@@ -145,7 +145,7 @@ Instead of syncing from scratch you can download a recent blockchain snapshot an
     ```
 4. Extract the archive into the data directory
     ```bash
-    sudo tar -xzf qrl-snapshot-2025-11-23.tar.gz -C /opt/qrl-data/data/
+    sudo tar -xzf qrl-snapshot-2026-08-15.tar.gz -C /opt/qrl-data/data/
     ```
 
     Files from the archive should already have correct ownership set (user/group 999), but use this command to be sure:

@@ -6,22 +6,22 @@ If you don't want to wait that long, you can download a recent snapshot of the b
 
 ## Download Latest Snapshot
 
-**📅 Date:** 2025-11-23
+**📅 Date:** 2026-08-15
 
-**💻 Size:** 15.80 GB
+**💻 Size:** 16.77 GB
 
-**💾 Torrent File:** [qrl-snapshot-2025-11-23.torrent](/files/qrl-snapshot-2025-11-23.torrent)
+**💾 Torrent File:** [qrl-snapshot-2026-08-15.torrent](/files/qrl-snapshot-2026-08-15.torrent)
 
 **🧲 Magnet Link:** 
 ```
-magnet:?xt=urn:btih:9db9c705d5f80cfe7e68713fe7e0b818e1b0f1e5&dn=qrl-snapshot-2025-11-23.tar.gz&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce
+magnet:?xt=urn:btih:8e3b5303c4bdd1960d00c67e8ad0507dcf64d7a2&dn=qrl-snapshot-2026-08-15.tar.gz&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce
 ```
 
 ---
 
 The blockchain state is in the form of `*.tar.gz` archive available for download as a torrent. You can download it using any standard app, like [qBittorrent](https://www.qbittorrent.org) or [Transmission](https://transmissionbt.com).
 
-*Note the current snapshot contains over 7 years of QRL history. It likely won't be updated again until the QRL 2.0 is released (which is expected to be in 2026). The final snapshot of QRL 1.0 blockchain will then be available here.*
+*Note the current snapshot contains 8 years of QRL history. It likely won't be updated again until the QRL 2.0 is released (which is expected to be in 2026). The final snapshot of QRL 1.0 blockchain will then be available here.*
 
 ## How to Use
 
@@ -43,7 +43,7 @@ Otherwise the data are by default stored in `~/.qrl/data/` (on Linux), or `C:\Us
     ```
 4) Extract the `.tar.gz` archive into the data folder.
     ```bash
-    tar -xzf qrl-snapshot-2025-11-23.tar.gz -C ~/.qrl/data/
+    tar -xzf qrl-snapshot-2026-08-15.tar.gz -C ~/.qrl/data/
     ```
     This should result in this path having many files inside `~/.qrl/data/state/...`.
 5) Start the QRL node again.
