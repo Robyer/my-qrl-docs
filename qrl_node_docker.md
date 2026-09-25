@@ -94,7 +94,7 @@ You can then uncomment and modify any settings you need. For available configura
 Download the official QRL Docker image from Docker Hub:
 
 ```bash
-sudo docker pull qrledger/qrl-docker:jammy
+sudo docker pull qrledger/qrl-docker:latest
 ```
 
 ---
@@ -109,7 +109,7 @@ sudo docker run -d \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:jammy \
+  qrledger/qrl-docker:latest \
   -l INFO
 ```
 
@@ -119,7 +119,7 @@ sudo docker run -d \
 - `-v /opt/qrl-data:/home/qrl/.qrl` - Mount host directory to container for persistent data
 - `-p 19009:19009` - Map API port (access controlled by QRL config inside container)
 - `-p 19000:19000` - Map P2P port for blockchain networking
-- `qrledger/qrl-docker:jammy` - The Docker image to use
+- `qrledger/qrl-docker:latest` - The Docker image to use
 - `-l INFO` - This overrides the default `--debug` flag which is not intended for production use, and sets logging to INFO level
 
 Verify the container is running:
@@ -262,7 +262,7 @@ sudo docker exec -it qrl-node qrl state
 
 ```bash
 # Pull latest image
-sudo docker pull qrledger/qrl-docker:jammy
+sudo docker pull qrledger/qrl-docker:latest
 
 # Stop and remove old container
 sudo docker stop qrl-node
@@ -274,7 +274,7 @@ sudo docker run -d \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:jammy \
+  qrledger/qrl-docker:latest \
   -l INFO
 ```
 
@@ -310,7 +310,7 @@ ExecStart=/usr/bin/docker run \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:jammy \
+  qrledger/qrl-docker:latest \
   -l INFO
 
 ExecStop=/usr/bin/docker stop qrl-node
