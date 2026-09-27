@@ -335,6 +335,24 @@ sudo systemctl status qrl-node.service
 sudo journalctl -u qrl-node.service -f
 ```
 
+### Updating when running with Systemd
+
+```bash
+# Stop the service
+sudo systemctl stop qrl-node.service
+
+# Pull latest image
+sudo docker pull qrledger/qrl-docker:latest
+
+# If you changed the docker image name (e.g., from :jammy to :latest), you need to also update the ExecStart command in the service configuration
+sudo nano /etc/systemd/system/qrl-node.service
+# and reload the systemd
+sudo systemctl daemon-reload
+
+# Start the service
+sudo systemctl start qrl-node.service
+```
+
 ---
 
 ## Additional Resources
