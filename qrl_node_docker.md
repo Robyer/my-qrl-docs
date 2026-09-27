@@ -109,8 +109,7 @@ sudo docker run -d \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:latest \
-  -l INFO
+  qrledger/qrl-docker:latest
 ```
 
 **Command explanation:**
@@ -120,7 +119,6 @@ sudo docker run -d \
 - `-p 19009:19009` - Map API port (access controlled by QRL config inside container)
 - `-p 19000:19000` - Map P2P port for blockchain networking
 - `qrledger/qrl-docker:latest` - The Docker image to use
-- `-l INFO` - This overrides the default `--debug` flag which is not intended for production use, and sets logging to INFO level
 
 Verify the container is running:
 
@@ -274,8 +272,7 @@ sudo docker run -d \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:latest \
-  -l INFO
+  qrledger/qrl-docker:latest
 ```
 
 ---
@@ -310,8 +307,7 @@ ExecStart=/usr/bin/docker run \
   -v /opt/qrl-data:/home/qrl/.qrl \
   -p 19009:19009 \
   -p 19000:19000 \
-  qrledger/qrl-docker:latest \
-  -l INFO
+  qrledger/qrl-docker:latest
 
 ExecStop=/usr/bin/docker stop qrl-node
 ExecStopPost=-/usr/bin/docker rm -f qrl-node
